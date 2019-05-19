@@ -54,7 +54,6 @@ public class Datum {
         if (jaar < 1900 || jaar > 2100) {
             return false;
         }
-
         return true;
     }
 

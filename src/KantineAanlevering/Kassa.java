@@ -1,14 +1,14 @@
 package KantineAanlevering;
 
-import java.util.Iterator;
-
 public class Kassa {
-
+private double geldInKassa;
+private int aantalArtikelen;
     /**
      * Constructor
      */
     public Kassa(KassaRij kassarij) {
-        // method body omitted
+        this.geldInKassa = 0.0;
+        this.aantalArtikelen = 0;
     }
 
     /**
@@ -20,7 +20,8 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        // method body omitted
+        geldInKassa += klant.getTotaalPrijs();
+        aantalArtikelen += klant.getAantalArtikelen();
     }
 
     /**
@@ -30,8 +31,7 @@ public class Kassa {
      * @return aantal artikelen
      */
     public int aantalArtikelen() {
-        // method body omitted
-        throw new UnsupportedOperationException();
+        return aantalArtikelen;
     }
 
     /**
@@ -42,8 +42,7 @@ public class Kassa {
      * @return hoeveelheid geld in de kassa
      */
     public double hoeveelheidGeldInKassa() {
-        // method body omitted
-        throw new UnsupportedOperationException();
+        return geldInKassa;
     }
 
     /**
@@ -51,6 +50,7 @@ public class Kassa {
      * de totale hoeveelheid geld in de kassa.
      */
     public void resetKassa() {
-        // method body omitted
+        geldInKassa = 0.0;
+        aantalArtikelen = 0;
     }
 }

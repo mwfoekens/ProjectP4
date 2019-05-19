@@ -4,14 +4,16 @@ import KantineAanlevering.Dienblad;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class KassaRij {
+    private Queue<Dienblad> wachtrij;
 
     /**
      * Constructor
      */
     public KassaRij() {
-        // method body omitted
+        this.wachtrij = new LinkedList<Dienblad>();
     }
 
     /**
@@ -20,7 +22,7 @@ public class KassaRij {
      * @param klant
      */
     public void sluitAchteraan(Dienblad klant) {
-        // method body omitted
+        wachtrij.add(klant);
     }
 
     /**
@@ -31,8 +33,9 @@ public class KassaRij {
      * @return Eerste klant in de rij of null
      */
     public Dienblad eerstePersoonInRij() {
-        // method body omitted
-        throw new UnsupportedOperationException();
+        if (!erIsEenRij()) {
+            return null;
+        } else return wachtrij.poll();
     }
 
     /**
@@ -41,7 +44,6 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        // method body omitted
-        throw new UnsupportedOperationException();
+        return wachtrij.size() > 0;
     }
 }
