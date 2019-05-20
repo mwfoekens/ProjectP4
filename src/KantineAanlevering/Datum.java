@@ -1,11 +1,21 @@
 package KantineAanlevering;
 
+/**
+ * Klasse voor de geboortedatum van een persoon
+ */
 public class Datum {
 
     private int dag;
     private int maand;
     private int jaar;
 
+    /**
+     * Constructor met parameters. Roept de constructor zonder parameters aan als de datum niet bestaat.
+     *
+     * @param dag   Persoons geboortedag
+     * @param maand Persoons geboortemaand
+     * @param jaar  Persoons geboortemaand
+     */
     public Datum(int dag, int maand, int jaar) {
         this();
         if (bestaatDatum(dag, maand, jaar)) {
@@ -15,15 +25,27 @@ public class Datum {
         }
     }
 
+    /**
+     * Constructor zonder parameters. Zet alle variabelen op 0.
+     */
     public Datum() {
         dag = 0;
         maand = 0;
         jaar = 0;
     }
 
-
+    /**
+     * Controleert of de datum bestaat
+     *
+     * @param dag   Persoons geboortedag
+     * @param maand Persoons geboortemaand
+     * @param jaar  Persoons geboortemaand
+     * @return geeft true terug als de datum bestaat, false als de datum niet bestaat.
+     */
     public static boolean bestaatDatum(int dag, int maand, int jaar) {
         int bestaatDag;
+        int jaarMin = 1900;
+        int jaarMax = 2100;
         switch (maand) {
             case 2:
                 if (jaar % 4 == 0 && (jaar % 100 != 0 || jaar % 400 == 0)) {
@@ -51,7 +73,7 @@ public class Datum {
         if (dag < 1 || dag > bestaatDag) {
             return false;
         }
-        if (jaar < 1900 || jaar > 2100) {
+        if (jaar < jaarMin || jaar > jaarMax) {
             return false;
         }
         return true;
@@ -60,12 +82,12 @@ public class Datum {
     /**
      * Getter voor Sting weergave van datum
      *
-     * @return Geboortedatum
+     * @return Geboortedatum geboortedatum van de persoon
      */
     public String getDatumAsString() {
-        if (dag == 0){
+        if (dag == 0) {
             return "Onbekend";
         }
-        return String.format("%s-%s-%s",dag, maand, jaar);
+        return String.format("%s-%s-%s", dag, maand, jaar);
     }
 }

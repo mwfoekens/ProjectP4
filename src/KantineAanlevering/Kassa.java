@@ -4,7 +4,9 @@ public class Kassa {
 private double geldInKassa;
 private int aantalArtikelen;
     /**
-     * Constructor
+     * Constructor met parameters.
+     *
+     * @param kassarij maakt een kassarij bij de kassa
      */
     public Kassa(KassaRij kassarij) {
         this.geldInKassa = 0.0;

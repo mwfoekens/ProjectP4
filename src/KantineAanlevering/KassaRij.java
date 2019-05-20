@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Klasse voor de kassarij in de kantine
+ */
 public class KassaRij {
     private Queue<Dienblad> wachtrij;
 
     /**
-     * Constructor
+     * Constructor zonder parameters. Maakt een nieuwe kassarij
      */
     public KassaRij() {
         this.wachtrij = new LinkedList<Dienblad>();

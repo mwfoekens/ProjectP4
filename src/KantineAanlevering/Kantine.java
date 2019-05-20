@@ -4,6 +4,8 @@ public class Kantine {
 
     private Kassa kassa;
     private KassaRij kassarij;
+    private Persoon persoon;
+    private Dienblad klant;
 
     /**
      * Constructor
@@ -20,16 +22,22 @@ public class Kantine {
      * Persoon zich aan bij de rij voor de kassa.
      */
     public void loopPakSluitAan() {
-        // method body omitted
+        persoon = new Persoon();
+        klant = new Dienblad(persoon);
+        Artikel artikel = new Artikel();
+        klant.voegToe(artikel);
+        klant.voegToe(artikel);
+        kassarij.sluitAchteraan(klant);
     }
 
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-//        while() {
-//            // omitted
-//        }
+        while (kassarij.erIsEenRij()) {
+            kassa.rekenAf(klant);
+            kassarij.eerstePersoonInRij();
+        }
     }
 
     /**
@@ -38,9 +46,7 @@ public class Kantine {
      * @return hoeveelheid geld in kassa
      */
     public double hoeveelheidGeldInKassa() {
-       // method body omitted
-
-        throw new UnsupportedOperationException();
+        return kassa.hoeveelheidGeldInKassa();
     }
 
     /**
@@ -49,8 +55,7 @@ public class Kantine {
      * @return het aantal gepasseerde artikelen
      */
     public int aantalArtikelen() {
-        // method body omitted
-        throw new UnsupportedOperationException();
+       return kassa.aantalArtikelen();
     }
 
     /**
@@ -58,6 +63,6 @@ public class Kantine {
      * het aantal artikelen en "leegt" de inhoud van de kassa.
      */
     public void resetKassa() {
-        // method body omitted
+        kassa.resetKassa();
     }
 }
