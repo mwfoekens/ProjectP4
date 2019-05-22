@@ -52,7 +52,7 @@ private int aantalArtikelen;
      * de totale hoeveelheid geld in de kassa.
      */
     public void resetKassa() {
-        geldInKassa = 0.0;
-        aantalArtikelen = 0;
+        this.geldInKassa = 0.0;
+        this.aantalArtikelen = 0;
     }
 }

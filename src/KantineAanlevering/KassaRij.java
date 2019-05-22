@@ -8,12 +8,15 @@ import java.util.Queue;
  */
 public class KassaRij {
     private Queue<Dienblad> wachtrij;
+    private Dienblad klant;
 
     /**
      * Constructor zonder parameters. Maakt een nieuwe kassarij
      */
     public KassaRij() {
-        this.wachtrij = new LinkedList<Dienblad>();
+        this.wachtrij = new LinkedList<>();
+        this.klant = new Dienblad();
+        sluitAchteraan(klant);
     }
 
     /**

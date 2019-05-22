@@ -7,9 +7,10 @@ public class Artikel {
     private String naam;
     private double prijs;
 
-    /** Constructor met parameters om een nieuw artikel te maken
+    /**
+     * Constructor met parameters om een nieuw artikel te maken
      *
-     * @param naam naam van het artikel
+     * @param naam  naam van het artikel
      * @param prijs prijs van het artikel
      */
     public Artikel(String naam, double prijs) {
@@ -61,6 +62,11 @@ public class Artikel {
         this.naam = naam;
     }
 
+    /**
+     * toString methode
+     *
+     * @return naam, prijs
+     */
     @Override
     public String toString() {
         return "Artikel{" +

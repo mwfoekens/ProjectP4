@@ -4,12 +4,16 @@ public class KantineSimulatie_1 {
 
     private static Kantine kantine;
     public static final int DAGEN = 7;
+    private static Dienblad klant;
+    private static String[] artikelnamen;
 
     /**
      * Constructor
      */
     public KantineSimulatie_1() {
         kantine = new Kantine();
+        this.klant = new Dienblad();
+        this.artikelnamen = new String[]{};
     }
 
     /**
@@ -21,18 +25,18 @@ public class KantineSimulatie_1 {
     public static void simuleer(int dagen) {
 
         for (int i = 0; i < dagen; i++) {
-
+            System.out.println(kantine.hoeveelheidGeldInKassa());
+            kantine.resetKassa();
             // per dag nu even vast 10 + i personen naar binnen
             // laten gaan, wordt volgende week veranderd...
 
             // for lus voor personen
             for (int j = 0; j < 10 + i; j++) {
-               kantine.loopPakSluitAan();
+                kantine.loopPakSluitAan(klant, artikelnamen);
+                kantine.verwerkRijVoorKassa();
+
 
             }
-            kantine.verwerkRijVoorKassa();
-            kantine.hoeveelheidGeldInKassa();
-            kantine.resetKassa();
 
             // verwerk rij voor de kassa
 

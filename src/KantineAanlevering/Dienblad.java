@@ -1,19 +1,19 @@
 package KantineAanlevering;
 
-import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * Klasse voor een dienblad in de kantine
  */
 public class Dienblad {
-    private ArrayList<Artikel> artikelen;
+    private Stack<Artikel> artikelen;
     private Persoon klant;
 
     /**
      * Constructor zonder parameters.
      */
     public Dienblad() {
-        this.artikelen = new ArrayList<>();
+        this.artikelen = new Stack<>();
     }
 
     /**
@@ -22,7 +22,7 @@ public class Dienblad {
      * @param klant gebruikt een bestaande klant
      */
     public Dienblad(Persoon klant) {
-        this.artikelen = new ArrayList<>();
+        this.artikelen = new Stack<>();
         this.klant = klant;
     }
 
