@@ -60,4 +60,12 @@ public class Artikel {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    @Override
+    public String toString() {
+        return "Artikel{" +
+                "naam='" + naam + '\'' +
+                ", prijs=" + prijs +
+                '}';
+    }
 }

@@ -13,6 +13,8 @@ public class Kantine {
     public Kantine() {
         kassarij = new KassaRij();
         kassa = new Kassa(kassarij);
+        persoon = new Persoon();
+        klant = new Dienblad(persoon);
     }
 
     /**
@@ -21,12 +23,11 @@ public class Kantine {
      * en plaats deze op het dienblad. Tenslotte sluit de
      * Persoon zich aan bij de rij voor de kassa.
      */
-    public void loopPakSluitAan() {
-        persoon = new Persoon();
-        klant = new Dienblad(persoon);
-        Artikel artikel = new Artikel();
-        klant.voegToe(artikel);
-        klant.voegToe(artikel);
+    public void loopPakSluitAan(Dienblad klant, String[] artikelnamen) {
+        Artikel eersteItem = new Artikel();
+        klant.voegToe(eersteItem);
+        Artikel tweedeItem = new Artikel();
+        klant.voegToe(tweedeItem);
         kassarij.sluitAchteraan(klant);
     }
 
