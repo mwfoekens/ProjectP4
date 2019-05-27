@@ -1,15 +1,22 @@
 package KantineAanlevering;
 
+import java.util.Iterator;
+
+/**
+ * Klasse om een kassa in een kantine te simuleren.
+ */
 public class Kassa {
-private double geldInKassa;
-private int aantalArtikelen;
+    private double geldInKassa;
+    private int aantalArtikelen;
+    private static final double STANDAARD_GELD_IN_LADE = 50.0;
+
     /**
      * Constructor met parameters.
      *
      * @param kassarij maakt een kassarij bij de kassa
      */
     public Kassa(KassaRij kassarij) {
-        this.geldInKassa = 0.0;
+        this.geldInKassa = STANDAARD_GELD_IN_LADE;
         this.aantalArtikelen = 0;
     }
 
@@ -19,11 +26,15 @@ private int aantalArtikelen;
      * de kassa worden bijgehouden. De implementatie wordt
      * later vervangen door een echte betaling door de persoon.
      *
-     * @param klant die moet afrekenen
+     * @param dienblad die moet afrekenen
      */
-    public void rekenAf(Dienblad klant) {
-        geldInKassa += klant.getTotaalPrijs();
-        aantalArtikelen += klant.getAantalArtikelen();
+    public void rekenAf(Dienblad dienblad) {
+        Iterator<Artikel> it = dienblad.getArtikelInfo();
+        while (it.hasNext()) {
+            Artikel current = it.next();
+            aantalArtikelen++;
+            geldInKassa += current.getPrijs();
+        }
     }
 
     /**
@@ -52,7 +63,7 @@ private int aantalArtikelen;
      * de totale hoeveelheid geld in de kassa.
      */
     public void resetKassa() {
-        this.geldInKassa = 0.0;
+        this.geldInKassa = STANDAARD_GELD_IN_LADE;
         this.aantalArtikelen = 0;
     }
 }

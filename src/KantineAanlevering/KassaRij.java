@@ -8,24 +8,24 @@ import java.util.Queue;
  */
 public class KassaRij {
     private Queue<Dienblad> wachtrij;
-    private Dienblad klant;
+    private Dienblad dienblad;
 
     /**
      * Constructor zonder parameters. Maakt een nieuwe kassarij
      */
     public KassaRij() {
         this.wachtrij = new LinkedList<>();
-        this.klant = new Dienblad();
-        sluitAchteraan(klant);
+        this.dienblad = new Dienblad();
+        sluitAchteraan(dienblad);
     }
 
     /**
      * Persoon sluit achter in de rij aan
      *
-     * @param klant
+     * @param dienblad
      */
-    public void sluitAchteraan(Dienblad klant) {
-        wachtrij.add(klant);
+    public void sluitAchteraan(Dienblad dienblad) {
+        wachtrij.add(dienblad);
     }
 
     /**

@@ -1,5 +1,6 @@
 package KantineAanlevering;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -8,6 +9,7 @@ import java.util.Stack;
 public class Dienblad {
     private Stack<Artikel> artikelen;
     private Persoon klant;
+    private Iterator it;
 
     /**
      * Constructor zonder parameters.
@@ -53,28 +55,32 @@ public class Dienblad {
         artikelen.add(artikel);
     }
 
-    /**
-     * Methode om aantal artikelen op dienblad te tellen
-     *
-     * @return Het aantal artikelen
-     */
-    public int getAantalArtikelen() {
-        return artikelen.size();
-    }
+//    /**
+//     * Methode om aantal artikelen op dienblad te tellen
+//     *
+//     * @return Het aantal artikelen
+//     */
+//    public int getAantalArtikelen() {
+//        return artikelen.size();
+//    }
+//
+//    /**
+//     * Methode om de totaalprijs van de artikelen
+//     *
+//     * op dienblad uit te rekenen
+//     *
+//     * @return De totaleprijs
+//     */
+//    public double getTotaalPrijs() {
+//        double totalePrijs = 0;
+//        for (Artikel artikel : artikelen) {
+//            totalePrijs += artikel.getPrijs();
+//        }
+//        return totalePrijs;
+//    }
 
-    /**
-     * Methode om de totaalprijs van de artikelen
-     *
-     * op dienblad uit te rekenen
-     *
-     * @return De totaleprijs
-     */
-    public double getTotaalPrijs() {
-        double totalePrijs = 0;
-        for (Artikel artikel : artikelen) {
-            totalePrijs += artikel.getPrijs();
-        }
-        return totalePrijs;
+    public Iterator<Artikel> getArtikelInfo() {
+        return artikelen.iterator();
     }
 }
 

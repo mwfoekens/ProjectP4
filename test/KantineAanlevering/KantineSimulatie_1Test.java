@@ -8,5 +8,6 @@ class KantineSimulatie_1Test {
 
     @Test
     void simuleer() {
+
     }
 }
