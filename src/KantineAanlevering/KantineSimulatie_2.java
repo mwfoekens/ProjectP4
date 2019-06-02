@@ -18,7 +18,7 @@ public class KantineSimulatie_2 {
 
     // artikelen
     private static final String[] artikelnamen = new String[]
-        {"Koffie", "Broodje pindakaas", "Broodje kaas", "Appelsap"};
+            {"Koffie", "Broodje pindakaas", "Broodje kaas", "Appelsap"};
 
     // prijzen
     private static double[] artikelprijzen = new double[]{1.50, 2.10, 1.65, 1.65};
@@ -34,22 +34,23 @@ public class KantineSimulatie_2 {
     // minimum en maximum artikelen per persoon
     private static final int MIN_ARTIKELEN_PER_PERSOON = 1;
     private static final int MAX_ARTIKELEN_PER_PERSOON = 4;
+    public static final int DAGEN = 7;
+
 
     /**
      * Constructor
-     *
      */
     public KantineSimulatie_2() {
         kantine = new Kantine();
         random = new Random();
         int[] hoeveelheden = getRandomArray(
-            AANTAL_ARTIKELEN,
-            MIN_ARTIKELEN_PER_SOORT,
-            MAX_ARTIKELEN_PER_SOORT);
+                AANTAL_ARTIKELEN,
+                MIN_ARTIKELEN_PER_SOORT,
+                MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod = new KantineAanbod(
-            artikelnamen, artikelprijzen, hoeveelheden);
+                artikelnamen, artikelprijzen, hoeveelheden);
 
-//        kantine.setKantineAanbod(kantineaanbod);
+        kantine.setKantineAanbod(kantineaanbod);
     }
 
     /**
@@ -63,7 +64,7 @@ public class KantineSimulatie_2 {
      */
     private int[] getRandomArray(int lengte, int min, int max) {
         int[] temp = new int[lengte];
-        for(int i = 0; i < lengte ;i++) {
+        for (int i = 0; i < lengte; i++) {
             temp[i] = getRandomValue(min, max);
         }
 
@@ -92,7 +93,7 @@ public class KantineSimulatie_2 {
     private String[] geefArtikelNamen(int[] indexen) {
         String[] artikelen = new String[indexen.length];
 
-        for(int i = 0; i < indexen.length; i++) {
+        for (int i = 0; i < indexen.length; i++) {
             artikelen[i] = artikelnamen[indexen[i]];
 
         }
@@ -107,41 +108,65 @@ public class KantineSimulatie_2 {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Standaard geld in kassa: " + kantine.getKassa().hoeveelheidGeldInKassa());
+        System.out.println("------------------------------------------------------------------");
         // for lus voor dagen
-        for(int i = 0; i < dagen; i++) {
+        for (int i = 0; i < dagen; i++) {
 
             // bedenk hoeveel personen vandaag binnen lopen
-//            int aantalpersonen = ... ;
+            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
-//            for(int j = 0; j < aantalpersonen; j++) {
-//
+            for (int j = 0; j < aantalpersonen; j++) {
+                Persoon persoon = new Persoon();
+                Dienblad dienblad = new Dienblad(persoon);
+
 //                // maak persoon en dienblad aan, koppel ze
 //                // en bedenk hoeveel artikelen worden gepakt
-//                int aantalartikelen = ... ;
+                int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
 //
 //                // genereer de "artikelnummers", dit zijn indexen
 //                // van de artikelnamen
-//                array int[] tepakken = getRandomArray(
-//                    aantalartikelen, 0, AANTAL_ARTIKELEN-1);
+                int[] tepakken = getRandomArray(
+                        aantalartikelen, 0, AANTAL_ARTIKELEN - 1);
 //
 //                // vind de artikelnamen op basis van
 //                // de indexen hierboven
-//                String[] artikelen = geefArtikelNamen(tepakken);
+                String[] artikelen = geefArtikelNamen(tepakken);
 //
 //                // loop de kantine binnen, pak de gewenste
 //                // artikelen, sluit aan
+                kantine.loopPakSluitAan(dienblad, artikelen);
+                kantine.verwerkRijVoorKassa();
 //
-//            }
-
+            }
+            System.out.println("Einde dag " + (i + 1) + ": \nDagtotalen: €" + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()));
+            System.out.println("Aantal artikelen verkocht: " + kantine.getKassa().aantalArtikelen());
+            System.out.println("Aantal klanten: " + aantalpersonen);
+            System.out.println("------------------------------------------------------------------");
+            kantine.getKassa().resetKassa();
             // verwerk rij voor de kassa
 
-            // druk de dagtotalen af en hoeveel personen binnen
-
-            // zijn gekomen
+            // druk de dagtotalen af en hoeveel personen binnen zijn gekomen
 
             // reset de kassa voor de volgende dag
 
         }
+    }
+
+    /**
+     * Start een simulatie
+     */
+    public static void main(String[] args) {
+        int dagen;
+
+        if (args.length == 0) {
+            dagen = DAGEN;
+        } else {
+            dagen = Integer.parseInt(args[0]);
+        }
+        KantineSimulatie_2 kantineSimulatie_2 = new KantineSimulatie_2();
+        kantineSimulatie_2.simuleer(dagen);
     }
 }

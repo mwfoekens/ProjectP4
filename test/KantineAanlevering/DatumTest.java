@@ -7,12 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class DatumTest {
     @Test
     void bestaatDatum() {
-        assertTrue(Datum.bestaatDatum(1,2,1900), "bestaatDatum simpel ;)");
+        assertTrue(Datum.bestaatDatum(1,2,1900), "bestaatDatum simpel");
         assertFalse(Datum.bestaatDatum(29, 2, 1900), "werkt schrikkeljaar test 1");
-        assertTrue(Datum.bestaatDatum(28, 2, 1900), "werkt schrikkeljaar test 1");
-        assertTrue(Datum.bestaatDatum(29, 2, 2000), "werkt schrikkeljaar test 2");
-        assertFalse(Datum.bestaatDatum(31,8,2101), "bestaatDatum simpel ;)");
-        assertFalse(Datum.bestaatDatum(32,1,2015));
+        assertTrue(Datum.bestaatDatum(28, 2, 1900), "werkt schrikkeljaar test 2");
+        assertTrue(Datum.bestaatDatum(29, 2, 2000), "werkt schrikkeljaar test 3");
+        assertFalse(Datum.bestaatDatum(31,8,2101), "bestaatDatum simpel");
     }
 
     @Test

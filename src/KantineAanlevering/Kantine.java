@@ -1,7 +1,5 @@
 package KantineAanlevering;
 
-import java.util.Random;
-
 /**
  * Klasse voor een kantine
  */
@@ -9,6 +7,7 @@ public class Kantine {
 
     private Kassa kassa;
     private KassaRij kassarij;
+    private KantineAanbod kantineAanbod;
 
     /**
      * Constructor zonder parameters
@@ -24,14 +23,20 @@ public class Kantine {
      * en plaats deze op het dienblad. Tenslotte sluit de
      * Persoon zich aan bij de rij voor de kassa.
      */
-    public void loopPakSluitAan(Dienblad dienblad, Artikel[] artikelen) {
-        //for (Artikel artikel : artikelen){
-        //    dienblad.voegToe(artikel);
-       // }
-        Random random = new Random();
-        int randomInt = random.nextInt(4) + 1;
-        dienblad.voegToe(artikelen[randomInt]);
-        dienblad.voegToe(artikelen[randomInt]);
+    public void loopPakSluitAan(Dienblad dienblad, String[] artikelen) {
+        for (String artikelnaam : artikelen) {
+            Artikel artikel = kantineAanbod.getArtikel(artikelnaam);
+            dienblad.voegToe(artikel);
+        }
+        kassarij.sluitAchteraan(dienblad);
+    }
+
+    public void loopPakSluitAan1() {
+        Persoon persoon = new Persoon();
+        Dienblad dienblad = new Dienblad(persoon);
+        Artikel artikel = new Artikel("Broodje", 2.00);
+        dienblad.voegToe(artikel);
+        dienblad.voegToe(artikel);
         kassarij.sluitAchteraan(dienblad);
     }
 
@@ -72,9 +77,29 @@ public class Kantine {
 
     /**
      * Getter om alles op te kunnen vragen bij klasse Kassa.
+     *
      * @return kassa
      */
     public Kassa getKassa() {
         return kassa;
+    }
+
+
+    /**
+     * Getter voor variabele kantineaanbod
+     *
+     * @return kantineAanbod
+     */
+    public KantineAanbod getKantineAanbod() {
+        return kantineAanbod;
+    }
+
+    /**
+     * Setter voor variabele kantineaanbod
+     *
+     * @param kantineAanbod
+     */
+    public void setKantineAanbod(KantineAanbod kantineAanbod) {
+        this.kantineAanbod = kantineAanbod;
     }
 }

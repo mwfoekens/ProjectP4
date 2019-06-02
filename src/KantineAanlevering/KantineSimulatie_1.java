@@ -11,12 +11,12 @@ public class KantineSimulatie_1 {
      */
     public KantineSimulatie_1() {
         this.kantine = new Kantine();
-        artikelen = new  Artikel[5];
-        artikelen[0] = new Artikel("Broodje Kaas",1.50);
-        artikelen[1] = new Artikel("Koffie",0.50);
-        artikelen[2] = new Artikel("Pizza",3.00);
-        artikelen[3] = new Artikel("Broodje gezond",3.50);
-        artikelen[4] = new Artikel("Thee",0.50);
+        artikelen = new Artikel[5];
+        artikelen[0] = new Artikel("Broodje Kaas", 1.50);
+        artikelen[1] = new Artikel("Koffie", 0.50);
+        artikelen[2] = new Artikel("Pizza", 3.00);
+        artikelen[3] = new Artikel("Broodje gezond", 3.50);
+        artikelen[4] = new Artikel("Thee", 0.50);
 
     }
 
@@ -27,6 +27,7 @@ public class KantineSimulatie_1 {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        System.out.println("------------------------------------------------------------------");
         System.out.println("Standaard geld in kassa: " + kantine.getKassa().hoeveelheidGeldInKassa());
         System.out.println("------------------------------------------------------------------");
         for (int i = 0; i < dagen; i++) {
@@ -38,11 +39,11 @@ public class KantineSimulatie_1 {
                 Persoon persoon = new Persoon();
                 Dienblad dienblad = new Dienblad(persoon);
 
-                kantine.loopPakSluitAan(dienblad, artikelen);
+                kantine.loopPakSluitAan1();
                 kantine.verwerkRijVoorKassa();
             }
-            System.out.println("Einde dag " + (i+1) +" €"+kantine.getKassa().hoeveelheidGeldInKassa());
-            System.out.println("Aantal artikelen verkocht: "+ kantine.getKassa().aantalArtikelen());
+            System.out.println("Einde dag " + (i + 1) + ": \nDagtotalen: €" + kantine.getKassa().hoeveelheidGeldInKassa());
+            System.out.println("Aantal artikelen verkocht: " + kantine.getKassa().aantalArtikelen());
             System.out.println("------------------------------------------------------------------");
             kantine.getKassa().resetKassa();
             // verwerk rij voor de kassa

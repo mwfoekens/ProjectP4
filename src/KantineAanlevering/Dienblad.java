@@ -9,7 +9,6 @@ import java.util.Stack;
 public class Dienblad {
     private Stack<Artikel> artikelen;
     private Persoon klant;
-    private Iterator it;
 
     /**
      * Constructor zonder parameters.
