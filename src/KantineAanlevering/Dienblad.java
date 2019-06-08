@@ -51,7 +51,7 @@ public class Dienblad {
      * @param artikel
      */
     public void voegToe(Artikel artikel) {
-        artikelen.add(artikel);
+        artikelen.push(artikel);
     }
 
 //    /**

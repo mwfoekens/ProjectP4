@@ -4,11 +4,11 @@ package KantineAanlevering;
  * Klasse om een persoon (oftewel klant) in de kantine aan te maken
  */
 public class Persoon {
-    String BSN;
-    String voorNaam;
-    String achterNaam;
-    Datum geboorteDatum;
-    char geslacht;
+    protected String BSN;
+    protected String voorNaam;
+    protected String achterNaam;
+    protected Datum geboorteDatum;
+    protected char geslacht;
 
     /**
      * Constructor met parameters
