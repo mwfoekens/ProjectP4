@@ -9,6 +9,7 @@ public class Persoon {
     protected String achterNaam;
     protected Datum geboorteDatum;
     protected char geslacht;
+    private Betaalwijze betaalwijze;
 
     /**
      * Constructor met parameters
@@ -137,6 +138,14 @@ public class Persoon {
             this.geslacht = 'O';
             return false;
         }
+    }
+
+    public Betaalwijze getBetaalwijze() {
+        return betaalwijze;
+    }
+
+    public void setBetaalwijze(Betaalwijze betaalwijze) {
+        this.betaalwijze = betaalwijze;
     }
 
     /**

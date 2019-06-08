@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class Dienblad {
     private Stack<Artikel> artikelen;
-    private Persoon klant;
+    private Persoon persoon;
 
     /**
      * Constructor zonder parameters.
@@ -20,11 +20,11 @@ public class Dienblad {
     /**
      * Constructor met paramaters. Maakt een dienblad voor een bestaande klant
      *
-     * @param klant gebruikt een bestaande klant
+     * @param persoon gebruikt een bestaande klant
      */
-    public Dienblad(Persoon klant) {
+    public Dienblad(Persoon persoon) {
         this.artikelen = new Stack<>();
-        this.klant = klant;
+        this.persoon = persoon;
     }
 
     /**
@@ -32,17 +32,18 @@ public class Dienblad {
      *
      * @return gegevens van de klant
      */
-    public Persoon getKlant() {
-        return klant;
+    public Persoon getPersoon() {
+        return persoon;
     }
 
     /**
      * Setter voor de variabele klant
      *
-     * @param klant
+     * @param persoon
      */
-    public void setKlant(Persoon klant) {
-        this.klant = klant;
+    public void setPersoon (Persoon persoon
+    ) {
+        this.persoon = persoon;
     }
 
     /**

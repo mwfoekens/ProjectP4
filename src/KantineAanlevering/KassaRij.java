@@ -15,8 +15,6 @@ public class KassaRij {
      */
     public KassaRij() {
         this.wachtrij = new LinkedList<>();
-        this.dienblad = new Dienblad();
-        sluitAchteraan(dienblad);
     }
 
     /**

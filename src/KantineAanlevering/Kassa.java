@@ -29,12 +29,31 @@ public class Kassa {
      * @param dienblad die moet afrekenen
      */
     public void rekenAf(Dienblad dienblad) {
+        Betaalwijze betaalwijze = dienblad.getPersoon().getBetaalwijze();
+        double teBetalen = 0;
+        int aantalArtikelen = 0;
         Iterator<Artikel> it = dienblad.getArtikelInfo();
         while (it.hasNext()) {
             Artikel current = it.next();
             aantalArtikelen++;
-            geldInKassa += current.getPrijs();
+            teBetalen += current.getPrijs();
         }
+        if (dienblad.getPersoon() instanceof KortingskaartHouder) {
+            KortingskaartHouder kortingskaartHouder = (KortingskaartHouder) dienblad.getPersoon();
+            double kortingsbedrag = teBetalen * kortingskaartHouder.geefKortingsPercentage();
+            if (kortingskaartHouder.heeftMaximum()) {
+                kortingsbedrag = Math.min(kortingsbedrag, kortingskaartHouder.geefMaximum());
+            }
+            teBetalen -= kortingsbedrag;
+        }
+        try {
+            betaalwijze.betaal(teBetalen);
+            geldInKassa += teBetalen;
+            this.aantalArtikelen += aantalArtikelen;
+        } catch (TeWeinigGeldException e) {
+            System.out.println(dienblad.getPersoon().getVoorNaam() + " " + dienblad.getPersoon().getAchterNaam() + " is een arme sloeber.");
+        }
+
     }
 
     /**

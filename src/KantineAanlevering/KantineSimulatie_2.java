@@ -148,7 +148,9 @@ public class KantineSimulatie_2 {
                     kantineMedewerker.setAchterDeKassa(false);
                     persoon = kantineMedewerker;
                 }
-
+                Betaalwijze betaalwijze = new Pinpas();
+                betaalwijze.setSaldo(2);
+                persoon.setBetaalwijze(betaalwijze);
 
                 System.out.println(persoon.toString());
                 Dienblad dienblad = new Dienblad(persoon);
@@ -170,7 +172,11 @@ public class KantineSimulatie_2 {
 //                // artikelen, sluit aan
                 kantine.loopPakSluitAan(dienblad, artikelen);
                 kantine.verwerkRijVoorKassa();
-//
+//                try {
+//                   kantine.verwerkRijVoorKassa();
+//                } catch (TeWeinigGeldException e) {
+//                    System.out.println(dienblad.getPersoon().getVoorNaam() + " " + dienblad.getPersoon().getAchterNaam() + " is een arme sloeber.");
+//                }
             }
 
             int aantalArtikelenDagVerkoop = kantine.getKassa().aantalArtikelen();
